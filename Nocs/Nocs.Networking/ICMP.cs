@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nocs.Networking
 {
-    public class Class1
+    public class ICMP
     {
     }
 }
