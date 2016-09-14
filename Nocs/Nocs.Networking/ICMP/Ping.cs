@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nocs.Networking.ICMP
 {
-    class Ping
+    public class Ping
     {
 
     }

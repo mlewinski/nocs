@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICMP\Ping.cs" />
+    <Compile Include="Model\Host.cs" />
+    <Compile Include="Model\HostInformation.cs" />
+    <Compile Include="Model\MessageQuery.cs" />
+    <Compile Include="Model\Route.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
