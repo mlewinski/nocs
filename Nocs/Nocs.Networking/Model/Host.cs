@@ -14,6 +14,5 @@ namespace Nocs.Networking.Model
         public string Hostname { get { return info.Hostname; } set { info.Hostname = value; } }
         public string Description;
         public Route NetworkRoute;
-
     }
 }
