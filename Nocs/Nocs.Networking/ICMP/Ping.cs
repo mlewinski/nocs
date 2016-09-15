@@ -16,7 +16,7 @@ namespace Nocs.Networking.ICMP
 
         public void Send(int ttl, int timeout, int count)
         {
-            PingOptions pingOptions = new PingOptions(ttl,false);
+            PingOptions pingOptions = new PingOptions( ttl, false);
             byte[] buffer;
             PingReply reply;
             for (int i = 0; i < count; i++)
@@ -32,6 +32,7 @@ namespace Nocs.Networking.ICMP
                         replyData.Ttl = reply.Options.Ttl;
                         replyData.RoundTripTime = reply.RoundtripTime;
                         replyData.Status = reply.Status;
+                        replyData.Timeout = timeout;
                     Messages.Add(replyData);
                 }
             }
