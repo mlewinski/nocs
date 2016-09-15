@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace Nocs.Networking.Model
 {
-    public class MessageQuery<T>
+    public class MessageQueue<T>
     {
         Queue<T> messages;
+
+        public MessageQueue()
+        {
+            messages=new Queue<T>();
+        } 
 
         public void Add(T message)
         {

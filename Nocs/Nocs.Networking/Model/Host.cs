@@ -14,5 +14,24 @@ namespace Nocs.Networking.Model
         public string Hostname { get { return info.Hostname; } set { info.Hostname = value; } }
         public string Description;
         public Route NetworkRoute;
+
+        public Host()
+        {
+            info = new HostInformation
+            {
+                Address = null,
+                Hostname = String.Empty
+            };
+        }
+
+        public Host(IPAddress address) : this()
+        {
+            info.Address = address;
+        }
+
+        public Host(IPAddress address, string hostname) : this(address)
+        {
+            info.Hostname = hostname;
+        }
     }
 }

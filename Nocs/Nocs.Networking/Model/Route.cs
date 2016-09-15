@@ -10,10 +10,12 @@ namespace Nocs.Networking.Model
     {
         public List<HostInformation> Hops;
 
-        public HostInformation this[int index]
+        public Route()
         {
-            get { return Hops[index]; }
+            Hops= new List<HostInformation>();
         }
+
+        public HostInformation this[int index] => Hops[index];
 
         public void AddHop(HostInformation hop)
         {
