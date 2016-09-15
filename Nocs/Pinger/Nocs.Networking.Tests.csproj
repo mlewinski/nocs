@@ -7,8 +7,8 @@
     <ProjectGuid>{0998D997-0823-422E-81C6-B44087F0A0FA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pinger</RootNamespace>
-    <AssemblyName>Pinger</AssemblyName>
+    <RootNamespace>Nocs.Networking.Tests</RootNamespace>
+    <AssemblyName>Nocs.Networking.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
