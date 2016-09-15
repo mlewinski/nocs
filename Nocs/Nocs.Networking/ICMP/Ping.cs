@@ -25,27 +25,13 @@ namespace Nocs.Networking.ICMP
                 reply = _pinger.Send(Host.Address, timeout, buffer, pingOptions);
                 if (reply != null)
                 {
-                    PingReplyData replyData = new PingReplyData();
-                    if (reply.Status == IPStatus.Success)
-                    {
+                    PingReplyData replyData = new PingReplyData();                    
                         replyData.Address = reply.Address;
                         replyData.BufferSize = reply.Buffer.Length;
                         replyData.DontFragment = reply.Options.DontFragment;
                         replyData.Ttl = reply.Options.Ttl;
                         replyData.RoundTripTime = reply.RoundtripTime;
-                        replyData.Timeout = timeout;
                         replyData.Status = reply.Status;
-                    }
-                    else
-                    {
-                        replyData.Address = Host.Address;
-                        replyData.BufferSize = buffer.Length;
-                        replyData.DontFragment = pingOptions.DontFragment;
-                        replyData.Ttl = pingOptions.Ttl;
-                        replyData.RoundTripTime = -1;
-                        replyData.Timeout = timeout;
-                        replyData.Status = reply.Status;
-                    }
                     Messages.Add(replyData);
                 }
             }
