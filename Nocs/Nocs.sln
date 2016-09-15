@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nocs.Networking", "Nocs.Net
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nocs.Networking", "Nocs.Networking\Nocs.Networking.csproj", "{9399A533-4B66-4553-AE7F-4629A82F5A34}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nocs.Tests", "Nocs.Tests", "{7349BAB1-351C-4B54-B0F2-390177E819D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinger", "Pinger\Pinger.csproj", "{0998D997-0823-422E-81C6-B44087F0A0FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +21,16 @@ Global
 		{9399A533-4B66-4553-AE7F-4629A82F5A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9399A533-4B66-4553-AE7F-4629A82F5A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9399A533-4B66-4553-AE7F-4629A82F5A34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0998D997-0823-422E-81C6-B44087F0A0FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0998D997-0823-422E-81C6-B44087F0A0FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0998D997-0823-422E-81C6-B44087F0A0FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0998D997-0823-422E-81C6-B44087F0A0FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9399A533-4B66-4553-AE7F-4629A82F5A34} = {6E68F9FF-B468-4E20-B619-3EC70F9706DB}
+		{0998D997-0823-422E-81C6-B44087F0A0FA} = {7349BAB1-351C-4B54-B0F2-390177E819D0}
 	EndGlobalSection
 EndGlobal

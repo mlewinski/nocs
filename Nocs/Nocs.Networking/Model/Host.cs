@@ -22,6 +22,8 @@ namespace Nocs.Networking.Model
                 Address = null,
                 Hostname = String.Empty
             };
+            Description = String.Empty;
+            NetworkRoute = null;
         }
 
         public Host(IPAddress address) : this()
