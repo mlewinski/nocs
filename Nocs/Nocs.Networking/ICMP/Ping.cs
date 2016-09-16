@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 using Nocs.Networking.Model;
 
 namespace Nocs.Networking.ICMP
@@ -26,13 +27,13 @@ namespace Nocs.Networking.ICMP
                 if (reply != null)
                 {
                     PingReplyData replyData = new PingReplyData();                    
-                        replyData.Address = reply.Address;
-                        replyData.BufferSize = reply.Buffer.Length;
-                        replyData.DontFragment = reply.Options.DontFragment;
-                        replyData.Ttl = reply.Options.Ttl;
-                        replyData.RoundTripTime = reply.RoundtripTime;
-                        replyData.Status = reply.Status;
-                        replyData.Timeout = timeout;
+                    replyData.Address = reply.Address;
+                    replyData.BufferSize = reply.Buffer.Length;
+                    replyData.DontFragment = reply.Options.DontFragment;
+                    replyData.Ttl = reply.Options.Ttl;
+                    replyData.RoundTripTime = reply.RoundtripTime;
+                    replyData.Status = reply.Status;
+                    replyData.Timeout = timeout;
                     Messages.Add(replyData);
                 }
             }
