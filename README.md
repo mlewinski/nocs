@@ -1,2 +1,2 @@
 # nocs
-Network Operations Control System
+Network Operations Center System
