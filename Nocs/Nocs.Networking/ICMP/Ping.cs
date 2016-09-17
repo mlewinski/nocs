@@ -30,11 +30,22 @@ namespace Nocs.Networking.ICMP
         /// <summary>
         /// Initializes host infomation with given host data
         /// </summary>
-        /// <param name="host"></param>
+        /// <param name="host">Object containing information about host to be pinged</param>
         public Ping(HostInformation host)
         {
             this.Host = host;
             this.Messages=new MessageQueue<PingReplyData>();
+        }
+
+        /// <summary>
+        /// Initializes host information with given host data and custom message queue
+        /// </summary>
+        /// <param name="host">Object containing information about host to be pinged</param>
+        /// <param name="messageQueue">Message queue where messages will be put</param>
+        public Ping(HostInformation host, MessageQueue<PingReplyData> messageQueue)
+        {
+            this.Host = host;
+            this.Messages = messageQueue;
         }
 
         /// <summary>

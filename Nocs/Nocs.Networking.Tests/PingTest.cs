@@ -39,6 +39,14 @@ namespace Nocs.Networking.Tests
         }
 
         [TestMethod]
+        public void IsHostinformationFilledWithDefaultData()
+        {
+            Ping ping = new Ping();
+            Assert.AreEqual(ping.Host.Hostname, "localhost");
+            Assert.AreEqual(ping.Host.Address, IPAddress.Parse("127.0.0.1"));
+        }
+
+        [TestMethod]
         public void IsReplyDataCorrect()
         {
             Ping ping = new Ping();
