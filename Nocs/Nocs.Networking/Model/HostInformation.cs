@@ -9,7 +9,7 @@ namespace Nocs.Networking.Model
 {
     public class HostInformation
     {
-        public IPAddress Address;
-        public string Hostname;
+        public IPAddress Address = IPAddress.Parse("127.0.0.1");
+        public string Hostname = "localhost";
     }
 }

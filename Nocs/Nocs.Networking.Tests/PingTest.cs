@@ -16,7 +16,7 @@ namespace Nocs.Networking.Tests
             Ping ping = new Ping();
             HostInformation host = new HostInformation(){Address = IPAddress.Parse("127.0.0.1"), Hostname = String.Empty};
             ping.Host = host;
-            ping.Send(1, 1, 1);
+            ping.Send(1, 1);
             Assert.AreNotEqual(ping.Messages.ToList().Count, 0);
         }
 
@@ -26,7 +26,7 @@ namespace Nocs.Networking.Tests
             Ping ping = new Ping();
             HostInformation host = new HostInformation() { Address = IPAddress.Parse("127.0.0.1"), Hostname = String.Empty };
             ping.Host = host;
-            ping.Send(1, 1, 1);
+            ping.Send(1, 1);
             PingReplyData rpd = ping.Messages.ToList()[0];
             Assert.IsNotNull(rpd);
             Assert.IsNotNull(rpd.Address);
@@ -44,7 +44,7 @@ namespace Nocs.Networking.Tests
             Ping ping = new Ping();
             HostInformation host = new HostInformation() { Address = IPAddress.Parse("127.0.0.1"), Hostname = String.Empty };
             ping.Host = host;
-            ping.Send(1, 1, 1);
+            ping.Send(1, 1);
             PingReplyData rpd = ping.Messages.ToList()[0];
             Assert.AreEqual(rpd.Address, host.Address);
             Assert.AreEqual(rpd.Timeout, 1);

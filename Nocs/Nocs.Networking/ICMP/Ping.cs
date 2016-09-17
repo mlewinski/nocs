@@ -9,33 +9,55 @@ using Nocs.Networking.Model;
 
 namespace Nocs.Networking.ICMP
 {
+    /// <summary>
+    /// Wrapper for System.Net.NetworkInformation.Ping class implementing message query
+    /// </summary>
     public class Ping
     {
-        public MessageQueue<PingReplyData> Messages = new MessageQueue<PingReplyData>();
-        public HostInformation Host = new HostInformation();
+        public MessageQueue<PingReplyData> Messages;
+        public HostInformation Host;
         System.Net.NetworkInformation.Ping _pinger = new System.Net.NetworkInformation.Ping();
 
-        public void Send(int ttl, int timeout, int count)
+        /// <summary>
+        /// Initializes messages and host information with new object (default values : IPAddress 127.0.0.1, hostname localhost)
+        /// </summary>
+        public Ping()
         {
-            PingOptions pingOptions = new PingOptions( ttl, false);
-            byte[] buffer;
-            PingReply reply;
-            for (int i = 0; i < count; i++)
+            this.Messages = new MessageQueue<PingReplyData>();
+            this.Host = new HostInformation();
+        }
+
+        /// <summary>
+        /// Initializes host infomation with given host data
+        /// </summary>
+        /// <param name="host"></param>
+        public Ping(HostInformation host)
+        {
+            this.Host = host;
+            this.Messages=new MessageQueue<PingReplyData>();
+        }
+
+        /// <summary>
+        /// Send echo message sequentially and put results into message queue
+        /// </summary>
+        /// <param name="ttl">Time-to-live. Determines number of hops after which request expires</param>
+        /// <param name="timeout">Maximum acceptable connection timeout</param>
+        public void Send(int ttl, int timeout)
+        {
+            PingOptions pingOptions = new PingOptions(ttl, false);
+            var buffer = Encoding.ASCII.GetBytes(ttl.ToString());
+            var reply = _pinger.Send(Host.Address, timeout, buffer, pingOptions);
+            if (reply != null)
             {
-                buffer = Encoding.ASCII.GetBytes(i.ToString());
-                reply = _pinger.Send(Host.Address, timeout, buffer, pingOptions);
-                if (reply != null)
-                {
-                    PingReplyData replyData = new PingReplyData();                    
-                    replyData.Address = reply.Address;
-                    replyData.BufferSize = reply.Buffer.Length;
-                    replyData.DontFragment = reply.Options.DontFragment;
-                    replyData.Ttl = reply.Options.Ttl;
-                    replyData.RoundTripTime = reply.RoundtripTime;
-                    replyData.Status = reply.Status;
-                    replyData.Timeout = timeout;
-                    Messages.Add(replyData);
-                }
+                PingReplyData replyData = new PingReplyData();
+                replyData.Address = reply.Address;
+                replyData.BufferSize = reply.Buffer.Length;
+                replyData.DontFragment = reply.Options.DontFragment;
+                replyData.Ttl = reply.Options.Ttl;
+                replyData.RoundTripTime = reply.RoundtripTime;
+                replyData.Status = reply.Status;
+                replyData.Timeout = timeout;
+                Messages.Add(replyData);
             }
         }
     }

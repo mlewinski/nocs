@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace Nocs.Networking.Model
 {
+    /// <summary>
+    /// Wrapper for PingReply implementing returning formatted string message
+    /// </summary>
+    /// 
+    /// TODO: 
+    ///     - use extension methods
     public class PingReplyData
     {
         public IPAddress Address;
