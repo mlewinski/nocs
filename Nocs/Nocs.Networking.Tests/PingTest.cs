@@ -57,5 +57,13 @@ namespace Nocs.Networking.Tests
             Assert.AreEqual(rpd.Address, host.Address);
             Assert.AreEqual(rpd.Timeout, 1);
         }
+
+        [TestMethod]
+        public void IsPingInitializedCorrectly()
+        {
+            Ping ping = new Ping(new HostInformation() {Address=IPAddress.Parse("127.0.0.2"), Hostname = "localhost1"}); //not default HostInformation values
+            Assert.AreEqual(ping.Host.Hostname,"localhost1");
+            Assert.AreEqual(ping.Host.Address,IPAddress.Parse("127.0.0.2"));
+        }
     }
 }
