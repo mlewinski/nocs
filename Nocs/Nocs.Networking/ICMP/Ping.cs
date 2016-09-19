@@ -71,5 +71,10 @@ namespace Nocs.Networking.ICMP
                 Messages.Add(replyData);
             }
         }
+        
+        public static void Send(HostInformation host, int ttl, int timeout){
+            
+            
+        }
     }
 }
