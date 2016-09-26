@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICMP\Ping.cs" />
+    <Compile Include="ICMP\Tracert.cs" />
     <Compile Include="Model\Host.cs" />
     <Compile Include="Model\HostInformation.cs" />
     <Compile Include="Model\MessageQueue.cs" />
