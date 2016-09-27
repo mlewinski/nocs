@@ -21,7 +21,8 @@ namespace Nocs.Networking.ICMP
         {
             _pinger.Host = target;
             _pinger.Send(n,timeout);
-            return new HostInformation() {Address = _pinger.Messages.ToList()[0].Address, Hostname = String.Empty};
+            List<PingReplyData> messages = _pinger.Messages.ToList();
+            return new HostInformation() {Address = messages[(n>messages.Count)?n:messages.Count-1].Address, Hostname = String.Empty};
         }
 
     }
