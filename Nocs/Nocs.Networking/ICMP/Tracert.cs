@@ -14,6 +14,14 @@ namespace Nocs.Networking.ICMP
 
         public Route Route => _route;
 
+        public HostInformation this[int index]
+        {
+            get
+            {
+                return _route[index];
+            }
+        }
+
         public Tracert()
         {
              _route = new Route();
@@ -36,6 +44,7 @@ namespace Nocs.Networking.ICMP
             {
                 _route.AddHop(new HostInformation() {Address = reply.Address});
                 n++;
+                if (n > maxTtl) throw new ArgumentOutOfRangeException(nameof(maxTtl), "TTL exceeded maximum TTL given");
                 reply = _pinger.Send(n, timeout);
             }
         }

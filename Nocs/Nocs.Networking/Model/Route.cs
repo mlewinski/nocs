@@ -8,7 +8,7 @@ namespace Nocs.Networking.Model
 {
     public class Route
     {
-        public List<HostInformation> Hops;
+        private List<HostInformation> Hops;
 
         public Route()
         {
