@@ -26,5 +26,10 @@ namespace Nocs.Networking.Model
         {
             this.Hops.Clear();
         }
+
+        public int Length
+        {
+            get { return Hops.Count-1; }
+        }
     }
 }

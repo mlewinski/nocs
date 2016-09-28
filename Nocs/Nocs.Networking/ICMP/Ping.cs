@@ -63,8 +63,11 @@ namespace Nocs.Networking.ICMP
                 PingReplyData replyData = new PingReplyData();
                 replyData.Address = reply.Address;
                 replyData.BufferSize = reply.Buffer.Length;
-                replyData.DontFragment = reply.Options.DontFragment;
-                replyData.Ttl = reply.Options.Ttl;
+                if (reply.Status == IPStatus.Success)
+                {
+                    replyData.DontFragment = reply.Options.DontFragment;
+                    replyData.Ttl = reply.Options.Ttl;
+                }
                 replyData.RoundTripTime = reply.RoundtripTime;
                 replyData.Status = reply.Status;
                 replyData.Timeout = timeout;

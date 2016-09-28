@@ -19,7 +19,7 @@ namespace Nocs.Networking.Model
         public IPAddress Address;
         public long RoundTripTime;
         public int Ttl;
-        public bool DontFragment;
+        public bool DontFragment = false;
         public long BufferSize;
         public long Timeout;
         public IPStatus Status;

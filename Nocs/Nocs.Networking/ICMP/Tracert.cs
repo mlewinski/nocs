@@ -40,10 +40,10 @@ namespace Nocs.Networking.ICMP
             _pinger.Host = target;
             int n = 1;
             PingReplyData reply = _pinger.Send(n,timeout);
-            while (reply.Address != target.Address)
+            while (!Equals(reply.Address, target.Address))
             {
-                _route.AddHop(new HostInformation() {Address = reply.Address});
                 n++;
+                _route.AddHop(new HostInformation() {Address = reply.Address});
                 if (n > maxTtl) throw new ArgumentOutOfRangeException(nameof(maxTtl), "TTL exceeded maximum TTL given");
                 reply = _pinger.Send(n, timeout);
             }
