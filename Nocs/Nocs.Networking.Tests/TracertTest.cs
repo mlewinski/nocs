@@ -19,7 +19,6 @@ namespace Nocs.Networking.Tests
             Tracert tracert = new Tracert();
             HostInformation host = tracert.GetHop(new HostInformation() {Address = IPAddress.Parse("127.0.0.1")}, 1);
             Assert.AreEqual(host.Address, IPAddress.Parse("127.0.0.1"));
-
         }
     }
 }

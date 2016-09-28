@@ -22,7 +22,7 @@ namespace Nocs.Networking.ICMP
         public HostInformation GetHop(HostInformation target, int n, int timeout=10000)
         {
             _pinger.Host = target;
-            _pinger.Send(n,timeout);
+            _pinger.AddReplyToMessageQueue(n,timeout);
             List<PingReplyData> messages = _pinger.Messages.ToList();
             return new HostInformation() {Address = messages[(n>messages.Count)?n:messages.Count-1].Address, Hostname = String.Empty};
         }
@@ -31,11 +31,13 @@ namespace Nocs.Networking.ICMP
         {
             _pinger.Host = target;
             int n = 1;
-            _pinger.Send(n,timeout);
-            while()
-            _pinger.Send(n, timeout);
-            List<PingReplyData> messages = _pinger.Messages.ToList();
-            return new HostInformation() { Address = messages[(n > messages.Count) ? n : messages.Count - 1].Address, Hostname = String.Empty };
+            PingReplyData reply = _pinger.Send(n,timeout);
+            while (reply.Address != target.Address)
+            {
+                _route.AddHop(new HostInformation() {Address = reply.Address});
+                n++;
+                reply = _pinger.Send(n, timeout);
+            }
         }
 
     }
