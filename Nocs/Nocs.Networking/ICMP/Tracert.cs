@@ -9,12 +9,14 @@ namespace Nocs.Networking.ICMP
 {
     public class Tracert
     {
-        List<HostInformation> _hops = new List<HostInformation>();
         Nocs.Networking.ICMP.Ping _pinger = new Ping();
+        private Route _route;
 
-        public List<HostInformation> Hops
+        public Route Route => _route;
+
+        public Tracert()
         {
-            get; set;
+             _route = new Route();
         }
 
         public HostInformation GetHop(HostInformation target, int n, int timeout=10000)
@@ -23,6 +25,17 @@ namespace Nocs.Networking.ICMP
             _pinger.Send(n,timeout);
             List<PingReplyData> messages = _pinger.Messages.ToList();
             return new HostInformation() {Address = messages[(n>messages.Count)?n:messages.Count-1].Address, Hostname = String.Empty};
+        }
+
+        public void GetRoute(HostInformation target, int maxTtl, int timeout = 10000)
+        {
+            _pinger.Host = target;
+            int n = 1;
+            _pinger.Send(n,timeout);
+            while()
+            _pinger.Send(n, timeout);
+            List<PingReplyData> messages = _pinger.Messages.ToList();
+            return new HostInformation() { Address = messages[(n > messages.Count) ? n : messages.Count - 1].Address, Hostname = String.Empty };
         }
 
     }

@@ -53,7 +53,7 @@ namespace Nocs.Networking.ICMP
         /// </summary>
         /// <param name="ttl">Time-to-live. Determines number of hops after which request expires</param>
         /// <param name="timeout">Maximum acceptable connection timeout</param>
-        public void Send(int ttl, int timeout)
+        public PingReplyData Send(int ttl, int timeout)
         {
             PingOptions pingOptions = new PingOptions(ttl, false);
             var buffer = Encoding.ASCII.GetBytes(ttl.ToString());
@@ -68,13 +68,14 @@ namespace Nocs.Networking.ICMP
                 replyData.RoundTripTime = reply.RoundtripTime;
                 replyData.Status = reply.Status;
                 replyData.Timeout = timeout;
-                Messages.Add(replyData);
+                return replyData;
             }
+            return null;
         }
-        
-        public static void Send(HostInformation host, int ttl, int timeout){
-            
-            
+
+        public void AddReplyToMessageQueue(int ttl, int timeout)
+        {
+            Messages.Add(this.Send(ttl, timeout));
         }
     }
 }
